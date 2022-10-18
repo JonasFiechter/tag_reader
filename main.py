@@ -1,9 +1,13 @@
+from os import cpu_count
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.logger import Logger
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.event import EventDispatcher
+import csv
+
+from datetime import datetime
 
 
 class MenuScreen(Screen, App):
@@ -13,10 +17,21 @@ class MenuScreen(Screen, App):
         self.stop()
 
 class SettingsScreen(Screen):
-    def log_on_screen(self):
-        Logger.warning('INSIDE SETTINGS')
+    pass
 
 class TagReader(Screen):
+    count_loop = 1
+    def export_to_csv(self):
+        Logger.info(f'Creating file...')
+        with open(f'test.csv', 'w') as file:
+            writer = csv.writer(file)
+            for index in range(self.count_loop):
+                writer.writerow([f'row({index})', 'column_test', f'max_count_{self.count_loop}'])
+    
+    def add_to_count(self):
+        Logger.warning('INSIDE SETTINGS')
+        Logger.error(f'COUNT LOOP => {cpu_count, self.count_loop}')
+        self.count_loop += 1
     pass
 
 class TagReaderApp(App):
