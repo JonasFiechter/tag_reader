@@ -1,19 +1,32 @@
 #:kivy 1.0.9
 
-<TagApp>
-    canvas:
-        Rectangle:
-                pos: self.center_x - 5, 0
-                size: 10, self.height
-                
-        Label:
-            font_size: 70  
-            center_x: root.width / 4
-            top: root.top - 50
-            text: "0"
-            
-        Label:
-            font_size: 70  
-            center_x: root.width * 3 / 4
-            top: root.top - 50
-            text: "0"
+<TagReader>:
+    BoxLayout:
+        canvas:
+            Rectangle:
+                pos: self.center_x - 5, 5
+                size: 40, 4
+        Button:
+            text: 'Back to menu'
+            on_press: root.manager.current = 'Menu'
+
+<MenuScreen>:
+    BoxLayout:
+        Button:
+            text: 'Goto settings'
+            on_press: root.manager.current = 'Settings'
+        Button:
+            text: 'Quit'
+            on_press: root.close_app()
+        ToggleButton:
+            text:'Tag Reader'
+            on_press: root.manager.current = 'TagReader'
+
+<SettingsScreen>:
+    BoxLayout:
+        Button:
+            text: 'My settings button'
+            on_press: root.log_on_screen()
+        Button:
+            text: 'Back to menu'
+            on_press: root.manager.current = 'Menu'
