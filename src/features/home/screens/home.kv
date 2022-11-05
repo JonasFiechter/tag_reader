@@ -9,24 +9,31 @@
         Button:
             text: 'Back to menu'
             on_press: root.manager.current = 'Menu'
+        Button:
+            text: 'Add to COUNT'
+            on_press: root.add_to_count()
+        Button:
+            text: 'Export'
+            on_press: root.export_to_csv()
+        TextInput:
+            id: 'column_name'
+            text: 'column_name'
+            pos_hint:{ 'right': 1, 'center_y': 0.5 }
 
 <MenuScreen>:
     BoxLayout:
         Button:
-            text: 'Goto settings'
+            text: 'Settings'
             on_press: root.manager.current = 'Settings'
         Button:
             text: 'Quit'
             on_press: root.close_app()
         ToggleButton:
-            text:'Tag Reader'
+            text: 'Tag Reader'
             on_press: root.manager.current = 'TagReader'
 
 <SettingsScreen>:
     BoxLayout:
-        Button:
-            text: 'My settings button'
-            on_press: root.log_on_screen()
         Button:
             text: 'Back to menu'
             on_press: root.manager.current = 'Menu'
