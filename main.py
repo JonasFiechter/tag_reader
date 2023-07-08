@@ -5,7 +5,6 @@ from kivy.logger import Logger
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.event import EventDispatcher
-from kivy.uix.textinput import TextInput
 
 import csv
 from datetime import datetime
@@ -25,6 +24,8 @@ class TagReader(Screen):
     count_loop = 1
 
     text = str()
+
+    # test_1 = TextInput()
     
     def export_to_csv(self):        
         Logger.info(f'Creating file...')
@@ -32,7 +33,11 @@ class TagReader(Screen):
             writer = csv.writer(file)
             writer.writerow(self.columns_structure)
             for index in range(self.count_loop):
-                writer.writerow([f'row({index})', 'column_test', f'max_count_{self.count_loop}'])
+                writer.writerow([
+                                    f'row({index})', 
+                                    'column_test', 
+                                    f'max_count_{self.count_loop}'
+                                ])
     
     def add_to_count(self):
         Logger.info('INSIDE SETTINGS')
